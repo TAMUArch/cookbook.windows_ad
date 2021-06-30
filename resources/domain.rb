@@ -32,7 +32,7 @@ action :create do
       cmd << " -SafeModeAdministratorPassword (convertto-securestring '#{new_resource.safe_mode_pass}' -asplaintext -Force)"
       cmd << ' -Force:$true'
       cmd << ' -NoRebootOnCompletion' unless new_resource.restart
-    elsif
+    else
       cmd = 'dcpromo -unattend'
       cmd << " -newDomain:#{new_resource.type}"
       cmd << " -NewDomainDNSName:#{new_resource.name}"
